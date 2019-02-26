@@ -7,7 +7,7 @@
       v-on:removeTodoItem="removeOneItem"
       v-on:toggleTodoItem="toggleOneItem"
     ></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
 </template>
 
@@ -61,6 +61,11 @@ export default {
       // 로컬 스토리지의 특정 레코드의 데이터를 갱신하는 로직부 (로컬 스토리지는 update가 별도로 없으므로 지웠다가 새로 넣는 형태로 구현)
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    /* TodoFooter 하위 컴포넌트로부터 모든 할일 삭제 이벤트를 수신하여 처리하도록 구현된 메소드 */
+    clearAllItems: function() {
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   components: {
