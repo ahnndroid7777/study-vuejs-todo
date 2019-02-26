@@ -23,18 +23,6 @@ export default {
       todoItems: []
     };
   },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          // 로컬 스토리지에 저장된 객체 타입의 문자열을 JSON 타입으로 변환하여 할 일 리스트(= todoItems) 배열에 저장
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i)))
-          );
-        }
-      }
-    }
-  },
   methods: {
     /* TodoInput 하위 컴포넌트로부터 입력된 텍스트필드의 값을 저장하도록 호출된 이벤트 수신 처리 메소드 구현부 */
     addOneItem(todoItem) {

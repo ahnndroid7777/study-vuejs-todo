@@ -2,7 +2,11 @@
   <div>
     <!-- style 부분에 적용된 트랜지션 애니메이션 적용을 위한 transition-group 구현부 -->
     <transition-group name="list" tag="ul">
-      <li class="shadow" v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item">
+      <li
+        class="shadow"
+        v-for="(todoItem, index) in this.$store.state.todoItems"
+        v-bind:key="todoItem.item"
+      >
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkBtnCompleted: todoItem.completed}"
