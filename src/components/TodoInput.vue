@@ -15,9 +15,19 @@ export default {
     };
   },
   methods: {
+    /* 할일 추가 메소드 구현부 */
     addTodo: function() {
-      localStorage.setItem(this.newTodoItem, this.newTodoItem);
-      this.clearInput();
+      // 입력 텍스트필드에 값이 있을 때만 로컬 스토리지에 저장하도록 분기
+      if (this.newTodoItem !== "") {
+        // 체크박스의 상태값과 값을 객체로 저장하기 위한 선언
+        var obj = {
+          completed: false, // 할일 완료 상태 플래그성 객체 프로퍼티
+          item: this.newTodoItem // 할일에 관한 실제 내용을 담을 객체 프로퍼티
+        };
+        // 입력 텍스트필드에 값이 입력되었을때, 로컬 스토리지에 JSON 타입의 값으로 저장
+        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.clearInput();
+      }
     },
     clearInput: function() {
       this.newTodoItem = "";
