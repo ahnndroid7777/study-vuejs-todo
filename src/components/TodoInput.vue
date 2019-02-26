@@ -7,12 +7,11 @@
 
     <Modal v-if="showModal" @close="showModal = false">
       <!-- 컴포넌트 재사용 예 => Modal 컴포넌트 내 특정 이름을 가진 slot 부분에 해당하는 컨텐츠를 재정의할 수 있음! -->
-      <h3 slot="header">경고!</h3>
-      <p slot="body">반드시 값이 입력되어야 합니다.</p>
-      <span slot="footer" v-on:click="showModal = false">
-        copyright@2019 by AhnnDroid
-        <i class="fas fa-times-circle" v-on:click="$emit('close')"></i>
-      </span>
+      <h3 slot="header">
+        경고!
+        <i class="closeModalBtn fas fa-times-circle" v-on:click="showModal = false"></i>
+      </h3>
+      <div slot="body">아무것도 입력하지 않으셨습니다.</div>
     </Modal>
   </div>
 </template>
@@ -74,5 +73,8 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>
