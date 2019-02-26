@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li class="shadow" v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item">
+      <li class="shadow" v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item">
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkBtnCompleted: todoItem.completed}"
@@ -18,23 +18,8 @@
 
 <script>
 export default {
-  data: function() {
-    return {
-      todoItems: []
-    };
-  },
-  created: function() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          // 로컬 스토리지에 저장된 객체 타입의 문자열을 JSON 타입으로 변환하여 할 일 리스트(= todoItems) 배열에 저장
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i)))
-          );
-        }
-      }
-    }
-  },
+  /* App 컴포넌트로부터 내려 받은 데이터 맵핑 */
+  props: ["propsdata"],
   methods: {
     removeTodo: function(todoItem, index) {
       localStorage.removeItem(todoItem);
