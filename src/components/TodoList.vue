@@ -10,10 +10,10 @@
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkBtnCompleted: todoItem.completed}"
-          v-on:click="toggleComplete(todoItem, index)"
+          v-on:click="toggleComplete({todoItem, index})"
         ></i>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
+        <span class="removeBtn" v-on:click="removeTodo({todoItem, index})">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -22,21 +22,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   computed: {
     ...mapGetters(["storedTodoItems"])
   },
   methods: {
-    /* Store(= Vuex)로 할일 삭제 이벤트 트리거링 */
-    removeTodo(todoItem, index) {
-      this.$store.commit("removeOneItem", { todoItem, index });
-    },
-    /* Store(= Vuex)로 할일 상태 변경 이벤트 트리거링 */
-    toggleComplete(todoItem, index) {
-      this.$store.commit("toggleOneItem", { todoItem, index });
-    }
+    /* mapMutations를 이용하여 Store(= Vuex)로 할일 삭제 이벤트 및 할일 상태 변경 이벤트를 트리거링하는 구현부 */
+    ...mapMutations({
+      removeTodo: "removeOneItem",
+      toggleComplete: "toggleOneItem"
+    })
   }
 };
 </script>
