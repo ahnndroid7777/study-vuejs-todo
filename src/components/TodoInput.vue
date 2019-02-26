@@ -44,6 +44,12 @@ export default {
     }
   },
   components: {
+    /*
+      [ES5] 속성명 축약 미적용
+      'Modal' : Modal
+     */
+
+    /* [ES6] 속성명 축약 적용 */
     Modal
   }
 };

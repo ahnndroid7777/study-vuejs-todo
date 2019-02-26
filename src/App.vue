@@ -69,6 +69,15 @@ export default {
     }
   },
   components: {
+    /* 
+      [ES5] 속성명 축약 미적용
+      'TodoHeader' : TodoHeader,
+      'TodoInput' : TodoInput,
+      'TodoList' : TodoList,
+      'TodoFooter' : TodoFooter
+     */
+
+    /* [ES6] 속성명 축약 적용 */
     TodoHeader,
     TodoInput,
     TodoList,
