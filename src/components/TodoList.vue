@@ -23,11 +23,11 @@ export default {
   props: ["propsdata"],
   methods: {
     /* 할일 삭제 시, 상위 컴포넌트인 App 컴포넌트의 removeTodoItem 이벤트 트리거링 */
-    removeTodo: function(todoItem, index) {
+    removeTodo(todoItem, index) {
       this.$emit("removeTodoItem", todoItem, index);
     },
     /* 임의의 선택된 할일에 대한 토글 상태 변경 시, 상위 컴포넌트인 App 컴포넌트의 toggleTodoItem 이벤트 트리거링 */
-    toggleComplete: function(todoItem, index) {
+    toggleComplete(todoItem, index) {
       this.$emit("toggleTodoItem", todoItem, index);
     }
   }

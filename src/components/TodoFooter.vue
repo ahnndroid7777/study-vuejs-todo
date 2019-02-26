@@ -8,7 +8,7 @@
 export default {
   methods: {
     /* 상위 컴포넌트인 App 컴포넌트로 모든 할일들을 삭제하도록 clearAll 이벤트 트리거링 */
-    clearTodo: function() {
+    clearTodo() {
       this.$emit("clearAll");
     }
   }

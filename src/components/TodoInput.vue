@@ -20,7 +20,7 @@
 import Modal from "./common/Modal.vue";
 
 export default {
-  data: function() {
+  data() {
     return {
       newTodoItem: "",
       showModal: false
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     /* 상위 컴포넌트인 App 컴포넌트로 할일 추가 이벤트 트리거하는 메소드 구현부 */
-    addTodo: function() {
+    addTodo() {
       // 입력 텍스트필드에 값이 있을 때만 로컬 스토리지에 저장하도록 분기
       if (this.newTodoItem !== "") {
         this.$emit("addTodoItem", this.newTodoItem);
@@ -39,7 +39,7 @@ export default {
         this.showModal = !this.showModal;
       }
     },
-    clearInput: function() {
+    clearInput() {
       this.newTodoItem = "";
     }
   },

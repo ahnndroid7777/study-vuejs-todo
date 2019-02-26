@@ -18,12 +18,12 @@ import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: []
     };
   },
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     /* TodoInput 하위 컴포넌트로부터 입력된 텍스트필드의 값을 저장하도록 호출된 이벤트 수신 처리 메소드 구현부 */
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       // 체크박스의 상태값과 값을 객체로 저장하기 위한 선언
       const obj = {
         completed: false, // 할일 완료 상태 플래그성 객체 프로퍼티
@@ -49,12 +49,12 @@ export default {
       this.todoItems.push(obj);
     },
     /* TodoList 하위 컴포넌트로부터 삭제 이벤트인 removeTodoItem 이벤트를 수신하여 삭제 처리하도록 구현된 메소드 */
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
     /* TodoList 하위 컴포넌트로부터 임의의 할일에 대한 토글 선택 시, 해당 이벤트를 수신하여 토글 처리하도록 구현된 메소드 */
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       // 토글이 선택될때마다 토글 모드를 반대값으로 설정
       this.todoItems[index].completed = !this.todoItems[index].completed;
 
@@ -63,7 +63,7 @@ export default {
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
     /* TodoFooter 하위 컴포넌트로부터 모든 할일 삭제 이벤트를 수신하여 처리하도록 구현된 메소드 */
-    clearAllItems: function() {
+    clearAllItems() {
       localStorage.clear();
       this.todoItems = [];
     }
