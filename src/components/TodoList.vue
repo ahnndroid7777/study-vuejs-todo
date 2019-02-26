@@ -25,14 +25,9 @@ export default {
     removeTodo: function(todoItem, index) {
       this.$emit("removeTodoItem", todoItem, index);
     },
-    /* 임의의 선택된 할일에 대한 상태 변경 메소드 구현부 */
+    /* 임의의 선택된 할일에 대한 토글 상태 변경 시, 상위 컴포넌트인 App 컴포넌트의 toggleTodoItem 이벤트 트리거링 */
     toggleComplete: function(todoItem, index) {
-      // 토글이 선택될때마다 토글 모드를 반대값으로 설정
-      todoItem.completed = !todoItem.completed;
-
-      // 로컬 스토리지의 특정 레코드의 데이터를 갱신하는 로직부 (로컬 스토리지는 update가 별도로 없으므로 지웠다가 새로 넣는 형태로 구현)
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      this.$emit("toggleTodoItem", todoItem, index);
     }
   }
 };
