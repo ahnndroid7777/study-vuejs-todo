@@ -4,7 +4,7 @@
     <transition-group name="list" tag="ul">
       <li
         class="shadow"
-        v-for="(todoItem, index) in this.$store.state.todoItems"
+        v-for="(todoItem, index) in this.storedTodoItems"
         v-bind:key="todoItem.item"
       >
         <i
@@ -22,7 +22,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters(["storedTodoItems"])
+  },
   methods: {
     /* Store(= Vuex)로 할일 삭제 이벤트 트리거링 */
     removeTodo(todoItem, index) {

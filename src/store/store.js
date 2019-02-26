@@ -25,6 +25,11 @@ export const store = new Vuex.Store({
     state: {
         todoItems: storage.fetch()
     },
+    getters: {
+        storedTodoItems(state) {
+            return state.todoItems;
+        }
+    },
     mutations: {
         /* 할일 추가 관련 mutations 적용 */
         addOneItem(state, todoItem) {
