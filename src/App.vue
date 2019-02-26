@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems"></TodoList>
+    <TodoList v-bind:propsdata="todoItems" v-on:removeTodoItem="removeOneItem"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -43,6 +43,11 @@ export default {
       localStorage.setItem(todoItem, JSON.stringify(obj));
       // 할일 리스트 배열에 전달된 할일의 값 저장
       this.todoItems.push(obj);
+    },
+    /* TodoInput 하위 컴포넌트로부터 삭제 이벤트인 removeTodoItem 이벤트를 수신하여 삭제 처리하도록 구현된 메소드 */
+    removeOneItem: function(todoItem, index) {
+      localStorage.removeItem(todoItem.item);
+      this.todoItems.splice(index, 1);
     }
   },
   components: {
