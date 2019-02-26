@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ul>
+    <!-- style 부분에 적용된 트랜지션 애니메이션 적용을 위한 transition-group 구현부 -->
+    <transition-group name="list" tag="ul">
       <li class="shadow" v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item">
         <i
           class="checkBtn fas fa-check"
@@ -12,7 +13,7 @@
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -66,6 +67,8 @@ li {
   margin-left: auto;
   color: #de4343;
 }
+
+/* [BEGIN] 할일 목록 대상 뷰 애니메이션 적용 관련 스타일링 구현부 */
 .list-item {
   display: inline-block;
   margin-right: 10px;
@@ -82,4 +85,5 @@ li {
   opacity: 0;
   transform: translateY(30px);
 }
+/* [FINISHED] 할일 목록 대상 뷰 애니메이션 적용 관련 스타일링 구현부 */
 </style>
