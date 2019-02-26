@@ -24,9 +24,9 @@
 <script>
 export default {
   methods: {
-    /* 할일 삭제 시, 상위 컴포넌트인 App 컴포넌트의 removeTodoItem 이벤트 트리거링 */
+    /* Store(= Vuex)로 할일 삭제 이벤트 트리거링 */
     removeTodo(todoItem, index) {
-      this.$emit("removeTodoItem", todoItem, index);
+      this.$store.commit("removeOneItem", { todoItem, index });
     },
     /* 임의의 선택된 할일에 대한 토글 상태 변경 시, 상위 컴포넌트인 App 컴포넌트의 toggleTodoItem 이벤트 트리거링 */
     toggleComplete(todoItem, index) {

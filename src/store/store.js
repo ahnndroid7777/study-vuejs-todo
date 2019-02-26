@@ -26,6 +26,7 @@ export const store = new Vuex.Store({
         todoItems: storage.fetch()
     },
     mutations: {
+        /* 할일 추가 관련 mutations 적용 */
         addOneItem(state, todoItem) {
             const obj = {
                 completed: false,
@@ -33,6 +34,11 @@ export const store = new Vuex.Store({
             };
             localStorage.setItem(todoItem, JSON.stringify(obj));
             state.todoItems.push(obj);
+        },
+        /* 할일 삭제 관련 mutations 적용 */
+        removeOneItem(state, payload) {
+            localStorage.removeItem(payload.todoItem.item);
+            state.todoItems.splice(payload.index, 1);
         }
     }
 });

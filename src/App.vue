@@ -2,11 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList
-      v-bind:propsdata="todoItems"
-      v-on:removeTodoItem="removeOneItem"
-      v-on:toggleTodoItem="toggleOneItem"
-    ></TodoList>
+    <TodoList v-on:toggleTodoItem="toggleOneItem"></TodoList>
     <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
 </template>
@@ -24,11 +20,6 @@ export default {
     };
   },
   methods: {
-    /* TodoList 하위 컴포넌트로부터 삭제 이벤트인 removeTodoItem 이벤트를 수신하여 삭제 처리하도록 구현된 메소드 */
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
     /* TodoList 하위 컴포넌트로부터 임의의 할일에 대한 토글 선택 시, 해당 이벤트를 수신하여 토글 처리하도록 구현된 메소드 */
     toggleOneItem(todoItem, index) {
       // 토글이 선택될때마다 토글 모드를 반대값으로 설정
