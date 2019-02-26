@@ -39,7 +39,7 @@ export default {
     /* TodoInput 하위 컴포넌트로부터 입력된 텍스트필드의 값을 저장하도록 호출된 이벤트 수신 처리 메소드 구현부 */
     addOneItem: function(todoItem) {
       // 체크박스의 상태값과 값을 객체로 저장하기 위한 선언
-      var obj = {
+      const obj = {
         completed: false, // 할일 완료 상태 플래그성 객체 프로퍼티
         item: todoItem // TodoInput 하위 컴포넌트로부터 전달된 할일의 실제 내용을 담는 객체 프로퍼티
       };
