@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList v-on:toggleTodoItem="toggleOneItem"></TodoList>
+    <TodoList></TodoList>
     <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
 </template>
@@ -20,15 +20,6 @@ export default {
     };
   },
   methods: {
-    /* TodoList 하위 컴포넌트로부터 임의의 할일에 대한 토글 선택 시, 해당 이벤트를 수신하여 토글 처리하도록 구현된 메소드 */
-    toggleOneItem(todoItem, index) {
-      // 토글이 선택될때마다 토글 모드를 반대값으로 설정
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-
-      // 로컬 스토리지의 특정 레코드의 데이터를 갱신하는 로직부 (로컬 스토리지는 update가 별도로 없으므로 지웠다가 새로 넣는 형태로 구현)
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
     /* TodoFooter 하위 컴포넌트로부터 모든 할일 삭제 이벤트를 수신하여 처리하도록 구현된 메소드 */
     clearAllItems() {
       localStorage.clear();
