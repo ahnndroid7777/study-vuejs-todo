@@ -5,13 +5,14 @@
       <i class="addBtn fas fa-plus" aria-hidden="true"></i>
     </span>
 
-    <!-- use the modal component, pass in the prop -->
     <Modal v-if="showModal" @close="showModal = false">
-      <!--
-        you can use custom content here to overwrite
-        default content
-      -->
-      <h3 slot="header">custom header</h3>
+      <!-- 컴포넌트 재사용 예 => Modal 컴포넌트 내 특정 이름을 가진 slot 부분에 해당하는 컨텐츠를 재정의할 수 있음! -->
+      <h3 slot="header">경고!</h3>
+      <p slot="body">반드시 값이 입력되어야 합니다.</p>
+      <span slot="footer" v-on:click="showModal = false">
+        copyright@2019 by AhnnDroid
+        <i class="fas fa-times-circle" v-on:click="$emit('close')"></i>
+      </span>
     </Modal>
   </div>
 </template>
@@ -33,7 +34,10 @@ export default {
       if (this.newTodoItem !== "") {
         this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput();
-      } else {
+      }
+      // 텍스트필드에 입력된 값이 없는 상태에서 추가 버튼 클릭 시, 경고 모달이 뜨도록 구현
+      else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput: function() {
