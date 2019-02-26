@@ -48,6 +48,11 @@ export const store = new Vuex.Store({
             // 로컬 스토리지의 특정 레코드의 데이터를 갱신하는 로직부 (로컬 스토리지는 update가 별도로 없으므로 지웠다가 새로 넣는 형태로 구현)
             localStorage.removeItem(payload.todoItem.item);
             localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
+        },
+        /* 전체 할일 삭제 관련 mutations 적용 */
+        clearAllItems(state) {
+            localStorage.clear();
+            state.todoItems = [];
         }
     }
 });

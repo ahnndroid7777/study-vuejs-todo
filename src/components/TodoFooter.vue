@@ -7,9 +7,9 @@
 <script>
 export default {
   methods: {
-    /* 상위 컴포넌트인 App 컴포넌트로 모든 할일들을 삭제하도록 clearAll 이벤트 트리거링 */
+    /* Store(= Vuex)로 전체 할일 삭제 이벤트 트리거링 */
     clearTodo() {
-      this.$emit("clearAll");
+      this.$store.commit("clearAllItems");
     }
   }
 };
