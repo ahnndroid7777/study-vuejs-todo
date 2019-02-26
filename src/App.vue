@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
+    <TodoInput></TodoInput>
     <TodoList
       v-bind:propsdata="todoItems"
       v-on:removeTodoItem="removeOneItem"
@@ -24,18 +24,6 @@ export default {
     };
   },
   methods: {
-    /* TodoInput 하위 컴포넌트로부터 입력된 텍스트필드의 값을 저장하도록 호출된 이벤트 수신 처리 메소드 구현부 */
-    addOneItem(todoItem) {
-      // 체크박스의 상태값과 값을 객체로 저장하기 위한 선언
-      const obj = {
-        completed: false, // 할일 완료 상태 플래그성 객체 프로퍼티
-        item: todoItem // TodoInput 하위 컴포넌트로부터 전달된 할일의 실제 내용을 담는 객체 프로퍼티
-      };
-      // 입력 텍스트필드에 값이 입력되었을때, 로컬 스토리지에 JSON 타입의 값으로 저장
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      // 할일 리스트 배열에 전달된 할일의 값 저장
-      this.todoItems.push(obj);
-    },
     /* TodoList 하위 컴포넌트로부터 삭제 이벤트인 removeTodoItem 이벤트를 수신하여 삭제 처리하도록 구현된 메소드 */
     removeOneItem(todoItem, index) {
       localStorage.removeItem(todoItem.item);

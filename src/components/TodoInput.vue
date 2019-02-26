@@ -31,7 +31,9 @@ export default {
     addTodo() {
       // 입력 텍스트필드에 값이 있을 때만 로컬 스토리지에 저장하도록 분기
       if (this.newTodoItem !== "") {
-        this.$emit("addTodoItem", this.newTodoItem);
+        // this.$emit("addTodoItem", this.newTodoItem);
+        const text = this.newTodoItem.trim();
+        this.$store.commit("addOneItem", text);
         this.clearInput();
       }
       // 텍스트필드에 입력된 값이 없는 상태에서 추가 버튼 클릭 시, 경고 모달이 뜨도록 구현

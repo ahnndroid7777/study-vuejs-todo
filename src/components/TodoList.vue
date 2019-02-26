@@ -23,8 +23,6 @@
 
 <script>
 export default {
-  /* App 컴포넌트로부터 내려 받은 데이터 맵핑 */
-  props: ["propsdata"],
   methods: {
     /* 할일 삭제 시, 상위 컴포넌트인 App 컴포넌트의 removeTodoItem 이벤트 트리거링 */
     removeTodo(todoItem, index) {
